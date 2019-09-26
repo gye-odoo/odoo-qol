@@ -59,6 +59,9 @@ function doStuff() {
       if (ev.which === 2 || (ev.ctrlKey && ev.which === 1)) {
         const task_id = idNameCache[title]
         if (task_id) {
+          if (ev.which === 1) {
+            ev.stopPropagation()
+          }
           window.open(getTaskUrl(task_id), '_blank');
         } else {
           alert(`Couldn't retrieve task ID for: ${title}`)
